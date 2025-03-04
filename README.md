@@ -43,7 +43,7 @@ cfdisk /dev/sdx
 | `/dev/sdx2` | 2x RAM       | Swap (opcional)     |
 | `/dev/sdx3` | Restante     | Linux filesystem    |
 
-- **EFI System**: Necesaria para sistemas UEFI. 550M es suficiente para la mayoría de los casos.
+- **EFI System**: Necesaria para sistemas UEFI. 550M es suficiente para la mayoría de los casos. Aunque si quieres ser extemista: le pongo 10 MB ajaj
 - **Swap**: Opcional, pero recomendado. Usa el doble de tu RAM si planeas hibernar, o igual a tu RAM si no.
 - **Linux filesystem**: Aquí se instalará Arch Linux.
 
