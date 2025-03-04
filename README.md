@@ -1,2 +1,2 @@
 # archinstall_nomoney
-Instalar Archlinux  sin gastar un centavo
+Instalar Archlinux  sin gastar un centavo en Cuba.
