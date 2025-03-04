@@ -1,13 +1,6 @@
-# archinstall SIN DINERO
-Cómo Instalar Archlinux  sin gastar un centavo en Cuba.
+# Guía de Instalación de Arch Linux sin gastar un Centavo en Cuba.
 
-
-Aquí tienes una guía profesional y detallada en español para instalar Arch Linux, escrita en formato Markdown. Puedes copiarla directamente a tu repositorio de GitHub.
-
-
-# Guía de Instalación de Arch Linux
-
-Esta guía te ayudará a instalar Arch Linux desde cero. Asegúrate de seguir cada paso cuidadosamente.
+Esta guía te ayudará a instalar Arch Linux desde cero, si andas sin dinero. Asegúrate de seguir cada paso cuidadosamente.
 
 ---
 
@@ -98,7 +91,7 @@ mount /dev/sdx1 /mnt/boot/efi
 
 ---
 
-## 5. Configurar las claves de pacman
+## 5. Configurar las claves de pacman (importante)
 
 Inicializa y configura las claves de pacman:
 
@@ -110,9 +103,9 @@ pacman -S archlinux-keyring
 
 ---
 
-## 6. Eliminar reflector (opcional)
+## 6. Eliminar reflector
 
-Reflector puede interferir durante la instalación. Si no lo necesitas, elimínalo:
+Reflector puede interferir durante la instalación. elimínalo si estás en modo Cuba:
 
 ```bash
 pacman -R reflector
@@ -122,9 +115,9 @@ rm -R /etc/systemd/system/reflector.service.d/
 
 ---
 
-## 7. Configurar el mirrorlist (opcional para Cuba)
+## 7. Configurar el mirrorlist (solo para Cuba)
 
-Si estás en Cuba, añade el repositorio de la UCI al archivo `mirrorlist`:
+Si estás en Cuba, añade el repositorio al archivo `mirrorlist`:
 
 ```bash
 nano /etc/pacman.d/mirrorlist
@@ -175,25 +168,13 @@ arch-chroot /mnt
 ```bash
 timedatectl set-ntp true
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
-hwclock --systohc
+hwclock --systohc && date
 ```
 
-> **Ejemplo**: Para Cuba, usa `America/Havana`.
+> **Ejemplo**: Para Cuba, usa `America/Havana` o sea `ln -s /usr/share/zoneinfo/America/Havana /etc/localtime`
 
-### Configurar el idioma:
 
-Edita `/etc/locale.gen` y descomenta los idiomas que necesites (por ejemplo, `es_ES.UTF-8 UTF-8`).
-
-Luego, genera las localizaciones:
-
-```bash
-locale-gen
-echo LANG=es_ES.UTF-8 > /etc/locale.conf
-```
-
----
-
-## 12. Configurar el hostname y los hosts
+## 11. Configurar el hostname y los hosts
 
 ### Establecer el hostname:
 
@@ -210,9 +191,8 @@ nano /etc/hosts
 Añade estas líneas:
 
 ```plaintext
-127.0.0.1   localhost
-::1         localhost
-127.0.1.1   nombre_del_equipo.localdomain nombre_del_equipo
+127.0.0.1 localhost nombre_del_equipo
+::1   localhost
 ```
 
 ---
@@ -244,7 +224,7 @@ passwd
 
 ```bash
 pacman -S grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
@@ -283,11 +263,8 @@ reboot
 ---
 
 ¡Felicidades! Has instalado Arch Linux correctamente. Ahora puedes iniciar sesión y comenzar a personalizar tu sistema.
+
+Postdata, si se te ocurre cambiar de red o adaptador y quieres que te coja el ip este comando está bueno:
+```bash
+nmtui
 ```
-
-### Instrucciones para GitHub:
-1. Crea un archivo llamado `README.md` en tu repositorio.
-2. Copia y pega el contenido anterior en el archivo.
-3. Haz commit y push a tu repositorio.
-
-¡Listo! Ahora tienes una guía profesional y detallada para instalar Arch Linux en tu GitHub. 😊
